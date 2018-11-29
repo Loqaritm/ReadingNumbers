@@ -8,7 +8,12 @@ Done in collaboration with @wangobango, who developed the whole neural network f
 # Examples
   Input image              |  Output image
 :-------------------------:|:-------------------------:
-![Input image](https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original1.jpg)  |  ![Output image](https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output1.jpg)
+dupa |  dupa
  
 
 ![Input image](https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original2.jpg) ![Output image](https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output2.jpg)
+
+<p float="left">
+  <img src="/https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original1.jpg" width="200" />
+  <img src="/https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output1.jpg" width="200" /> 
+</p>
