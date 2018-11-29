@@ -8,11 +8,11 @@ Done in collaboration with @wangobango, who developed the whole neural network f
 # Examples
 
 <p float="center">
-  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original1.jpg" width="50%" />
-  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output1.jpg" width="50%" /> 
+  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original1.jpg" width="40%" />
+  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output1.jpg" width="40%" /> 
 </p>
 
 <p float="center">
-  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original2.jpg" width="50%" />
-  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output2.jpg" width="50%" /> 
+  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/original2.jpg" width="40%" />
+  <img src="https://raw.githubusercontent.com/Loqaritm/ReadingNumbers/master/examples/output2.jpg" width="40%" /> 
 </p>
