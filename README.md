@@ -15,7 +15,7 @@ Navigate to the newly created folder and run the program with Python:
 cd ReadingNumbers
 python3 project.py [filename]
 ```
-**Important!** Do not put ".jpg" in filename. Files to be read are to be located in **data_set/ folder**.
+**Important!** Do not put ".jpg" in filename. Files to be read are to be located in **data_set/** folder.
 
 To test if everything is working run:
 ```
