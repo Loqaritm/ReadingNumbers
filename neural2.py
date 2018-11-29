@@ -34,6 +34,7 @@ class neuralNetwork:
         final_outputs = self.activation_function(final_inputs)
 
         output_errors = targets - final_outputs
+        # output_errors = self.cross_entropy(final_outputs, targets)
         hidden2_errors = np.dot(self.wh2o.T, output_errors)
         hidden_errors = np.dot(self.whh2.T,hidden2_errors)
         # input_errors = np.dot(self.wih,hidden_errors)
@@ -53,19 +54,13 @@ class neuralNetwork:
         hidden2_outputs = self.activation_function(hidden2_inputs)
 
         final_inputs = np.dot(self.wh2o, hidden2_outputs)
-
         final_outputs = self.activation_function(final_inputs)
+        # final_outputs = self.softmax(final_inputs)
         
         return final_outputs
 
-    def serialize(self):
-        weights = (self.wih,self.whh2,self.wh2o)
-        f = open('weights.pkl', 'wb')
-        pickle.dump(weights,f)
-        f.close()
-
-    def deserialize(self):
-        f = open('weights.pkl', 'rb')
+    def deserialize(self,path):
+        f = open(path, 'rb')
         weights = pickle.load(f)
         self.wih = weights[0]
         self.whh2 = weights[1]
@@ -82,6 +77,32 @@ class neuralNetwork:
                     targets[int(all_values[0])] = 0.99
                     self.train(inputs,targets)      
 
+    def test_mnist(self, path):
+        file2 = load(path)
+        for record in file2:
+            all_values = record.split(',')
+            correct_label = int(all_values[0])
+            # print(correct_label, "correct answer")
+            inputs = (np.asfarray(all_values[1:]) / 255.0 * 0.99) + 0.01
+            outputs = n.query(inputs)
+            label = np.argmax(outputs)
+            # print(label, "network's answer")
+            if( label == correct_label):
+                scorecard.append(1)
+            else:
+                scorecard.append(0)
+
+        scorecard_array = np.asarray(scorecard)
+        print ("performance = ", scorecard_array.sum() /  scorecard_array.size)
+
+    def softmax(self,x):
+        return np.exp(x) / np.sum(np.exp(x), axis=0)
+
+    def cross_entropy(self,predictions, targets, epsilon=1e-12):
+        predictions = np.clip(predictions, epsilon, 1. - epsilon)
+        N = predictions.shape[0]
+        ce = -np.sum(targets*np.log(predictions+1e-9))/N
+        return ce
 
 
 
@@ -92,13 +113,13 @@ def load(path):
     return data_list
 
 if __name__ == "__main__":
-    file = load("bigger/mnist_train.csv")
+    # file = load("bigger/mnist_train.csv")
     # file2 = load("bigger/mnist_test.csv")
 
 
     input_nodes = 784
-    hidden_nodes = 300
-    hidden_nodes2 = 300
+    hidden_nodes = 150
+    hidden_nodes2 = 150
     output_nodes = 10
     learning_rate = 0.1
     scorecard = []
@@ -120,6 +141,8 @@ if __name__ == "__main__":
     n.serialize()  
 
     # n.deserialize()
+
+    n.test_mnist("bigger/mnist_test.csv")
 
     # print(file[0].split(',')[0])
     # print(n.query(np.asfarray(file[0].split(',')[1:])))
